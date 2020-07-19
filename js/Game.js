@@ -72,7 +72,15 @@ class Game {
           
           if(hurdles[index-1] !== undefined && runners[index-1].isTouching(hurdles[index-1])){
             player.updateGameState(2);
-          }          
+            textSize(20);
+            text("Game Over",  runners[index - 1].x - 100, runners[index - 1].y - 100);
+          }
+          
+          if(player.distance >= 8000) {
+            textSize(20);
+            text("Game Over",  runners[index - 1].x - 100, runners[index - 1].y - 100);
+            player.updateGameState(2);
+          }
 
         }
        
@@ -84,16 +92,10 @@ class Game {
         player.distance += 3;
     }
 
-    if(player.distance >= 8000) {
-      gameState = 2;
-    }
-
     drawSprites();
   }
 
   end() {
     player.distance += 0;
-    textSize(20);
-    text("Game Over", displayWidth/2 - 50, displayHeight/3);
   }
 }
